@@ -7,5 +7,15 @@ declare module 'styled-components' {
       white: string;
       orange: string;
     };
+    contentWidthSize: {
+      bigWindow: string;
+      middleWindow: string;
+      smallWindow: string;
+    };
+    browserWidthSize: {
+      bigWindow: string;
+      middleWindow: string;
+      smallWindow: string;
+    };
   }
 }
