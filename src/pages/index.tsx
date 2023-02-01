@@ -57,21 +57,18 @@ const BackGround = styled.div`
 `;
 
 const Container = styled.div`
-  ${(props) => {
-    return `
-    @media screen and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+  ${(props) =>
+    `
+      @media only screen and (min-width: ${props.theme.browserWidthSize.smallWindow}) {
+      width: ${props.theme.browserWidthSize.smallWindow};
+      @media only screen and (min-width: ${props.theme.browserWidthSize.middleWindow}) {
+      width: ${props.theme.browserWidthSize.middleWindow};
+      @media only screen and (min-width: ${props.theme.browserWidthSize.bigWindow}) {
       width: ${props.theme.browserWidthSize.bigWindow};
     }
-    @media screen and (max-width: ${props.theme.browserWidthSize.middleWindow}) {
-      width: ${props.theme.browserWidthSize.middleWindow};
-    }
-    @media screen and (max-width: ${props.theme.browserWidthSize.smallWindow}) {
-      width: ${props.theme.browserWidthSize.smallWindow};
-    }
-    `;
-  }}
+    `}
   position: relative;
-  width: 1440px;
+  /* width: 1440px; */
   height: 100%;
 `;
 

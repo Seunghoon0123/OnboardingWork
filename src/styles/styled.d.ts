@@ -17,5 +17,15 @@ declare module 'styled-components' {
       middleWindow: string;
       smallWindow: string;
     };
+    leftPosition: {
+      bigWindow: string;
+      middleWindow: string;
+      smallWindow: string;
+    };
+    flexSet: {
+      center: string;
+      spaceBetween: string;
+      spaceAround: string;
+    };
   }
 }

@@ -16,4 +16,26 @@ export const theme: DefaultTheme = {
     middleWindow: '768px',
     smallWindow: '375px',
   },
+  leftPosition: {
+    bigWindow: '1440px',
+    middleWindow: '768px',
+    smallWindow: '375px',
+  },
+  flexSet: {
+    center: `
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    `,
+    spaceBetween: `
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    `,
+    spaceAround: `
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    `,
+  },
 };
