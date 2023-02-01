@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-const Home = () => {
+const EnrollComplete = () => {
   return (
     <BackGround>
       <Header />
@@ -36,7 +36,7 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default EnrollComplete;
 
 const BackGround = styled.div`
   position: relative;
