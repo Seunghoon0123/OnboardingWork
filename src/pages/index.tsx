@@ -70,6 +70,13 @@ const BackGround = styled.div`
     `}
   position: relative;
   width: 100vw;
+
+  button {
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
 `;
 
 const Container = styled.div`
@@ -298,7 +305,10 @@ const BackArrow = styled.div`
   padding: 2px;
   gap: 4px;
 
-  /* top: 1192px; */
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 `;
 
 const ArrowIcon = styled.div`

@@ -36,6 +36,10 @@ const CheckContainer = styled.div`
 
 const CheckIcon = styled.div`
   ${(props) => props.theme.flexRowSet.center}
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 `;
 
 const CheckDescription = styled.div`
@@ -65,4 +69,8 @@ const LookMoreDetail = styled.div`
   /* Gray / 500 */
 
   color: #757575;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 `;

@@ -2,6 +2,10 @@ import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
+const widthBigWindow = '1040px';
+const widthMiddleWindow = '702px';
+const widthSmallWindow = '343px';
+
 const Footer = () => {
   return (
     <Background>
@@ -11,30 +15,31 @@ const Footer = () => {
             <OntolLogo>
               <Image src="/OntolLogo.svg" width={72.39} height={19.91} alt="(V)" />
             </OntolLogo>
-            <FooterMenu>
-              <Subject>메뉴</Subject>
-              <Items>
-                <ItemContent>검사지 업로드</ItemContent>
-                <ItemContent>이용 가이드</ItemContent>
-                <ItemContent>설정</ItemContent>
-              </Items>
-            </FooterMenu>
-            <FooterMenu>
-              <Subject>문의</Subject>
-              <Items>
-                <ItemContent>의사 등록</ItemContent>
-                <ItemContent>제휴 문의</ItemContent>
-              </Items>
-            </FooterMenu>
-
-            <FooterMenu>
-              <Subject>고객지원</Subject>
-              <Items>
-                <ItemContent>공지사항</ItemContent>
-                <ItemContent>자주 묻는 질문</ItemContent>
-                <ItemContent>1대1 문의</ItemContent>
-              </Items>
-            </FooterMenu>
+            <FooterMenuContainer>
+              <FooterMenu>
+                <Subject>메뉴</Subject>
+                <Items>
+                  <ItemContent>검사지 업로드</ItemContent>
+                  <ItemContent>이용 가이드</ItemContent>
+                  <ItemContent>설정</ItemContent>
+                </Items>
+              </FooterMenu>
+              <FooterMenu>
+                <Subject>문의</Subject>
+                <Items>
+                  <ItemContent>의사 등록</ItemContent>
+                  <ItemContent>제휴 문의</ItemContent>
+                </Items>
+              </FooterMenu>
+              <FooterMenu>
+                <Subject>고객지원</Subject>
+                <Items>
+                  <ItemContent>공지사항</ItemContent>
+                  <ItemContent>자주 묻는 질문</ItemContent>
+                  <ItemContent>1대1 문의</ItemContent>
+                </Items>
+              </FooterMenu>
+            </FooterMenuContainer>
             <ContactsContainer>
               <ContactItemContainer>
                 <Image src="/Twiter.svg" width={14.32} height={11.64} alt="Twiter" />
@@ -97,40 +102,133 @@ const Background = styled.div`
   ${(props) => props.theme.flexCustomSet({ flexDirection: '', justifyContent: 'center', alignItems: '' })}
   width: 100vw;
   background: #fcfcfc;
+  box-shadow: inset 0px 1px 0px #eeeeee;
 `;
 
 const Container = styled.footer`
   /* Footer */
   ${(props) => props.theme.flexCustomSet({ flexDirection: '', justifyContent: 'center', alignItems: '' })}
 
-  width: 1440px;
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        width : ${widthBigWindow};
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        width : ${widthMiddleWindow};
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        width : ${widthSmallWindow};
+      }
+    }
+    `}
   padding: 48px 0px;
   /* border-top */
-  box-shadow: inset 0px 1px 0px #eeeeee;
 `;
 
 const InnerContainer = styled.div`
-  ${(props) =>
-    props.theme.flexCustomSet({
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      alignItems: '',
-    })}
   /* Frame 2823 */
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        ${props.theme.flexCustomSet({
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: '',
+        })}
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {        
+        ${props.theme.flexCustomSet({
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: '',
+        })}
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        ${props.theme.flexCustomSet({
+          flexDirection: 'column',
+          justifyContent: '',
+          alignItems: '',
+        })}
+    }
+    `}
 
   width: 1040px;
 `;
 
 const UpperContainer = styled.div`
   ${(props) =>
-    props.theme.flexCustomSet({
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: '',
-    })}
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        ${props.theme.flexCustomSet({
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: '',
+        })}
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {        
+        ${props.theme.flexCustomSet({
+          flexDirection: 'column',
+          justifyContent: '',
+          alignItems: '',
+        })}
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        ${props.theme.flexCustomSet({
+          flexDirection: 'column',
+          justifyContent: '',
+          alignItems: '',
+        })}
+    }
+    `}
 `;
+
+const FooterMenuContainer = styled.div`
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        ${props.theme.flexCustomSet({
+          flexDirection: 'row',
+          justifyContent: '',
+          alignItems: '',
+        })}
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 116px;
+        ${props.theme.flexCustomSet({
+          flexDirection: 'row',
+          justifyContent: '',
+          alignItems: '',
+        })}
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        margin-top: 116px;
+        ${props.theme.flexCustomSet({
+          flexDirection: 'row',
+          justifyContent: '',
+          alignItems: '',
+        })}
+    }
+    `}
+`;
+
 const LowerContainer = styled.div`
-  ${(props) => props.theme.flexRowSet.spaceBetween}
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        ${props.theme.flexRowSet.spaceBetween}
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {        
+        ${props.theme.flexRowSet.spaceBetween}
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        ${props.theme.flexCustomSet({
+          flexDirection: 'column',
+          justifyContent: '',
+          alignItems: '',
+        })}
+    }
+    `}
 `;
 
 const OntolLogo = styled.div`
@@ -185,12 +283,35 @@ const ItemContent = styled.div`
 
 const FooterMenu = styled.div`
   /* Group 140 */
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        padding: 0px 90px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        padding-right: 159px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        padding-right: 50px;
+      }
+    `}
 
   height: 96px;
 `;
 
 const ContactsContainer = styled.div`
   ${(props) => props.theme.flexRowSet.spaceBetween}
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 48px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        margin-top: 48px;
+    }
+    `}
   /* Group 143 */
 
   width: 96px;
@@ -208,6 +329,19 @@ const ContactItemContainer = styled.div`
 
 const RemarkContainer = styled.div`
   /* Label/XS/500 */
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        padding-top: 40px;
+        div{
+          padding-top: 8px;
+        }
+      }
+    `}
 
   ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
@@ -221,6 +355,16 @@ const RemarkContainer = styled.div`
 `;
 
 const AppContactContainer = styled.div`
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        padding-top: 48px;
+      }
+    `}
   ${(props) => props.theme.flexRowSet.spaceBetween}
   /* Group 136 */
 
