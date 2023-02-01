@@ -82,9 +82,20 @@ const Footer = () => {
 export default Footer;
 
 const Background = styled.div`
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        height: 360px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        height: 488px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        height: 576px;
+    }
+    `}
   ${(props) => props.theme.flexCustomSet({ flexDirection: '', justifyContent: 'center', alignItems: '' })}
   width: 100vw;
-  height: 360px;
   background: #fcfcfc;
 `;
 

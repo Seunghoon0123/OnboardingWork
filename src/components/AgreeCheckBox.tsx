@@ -9,7 +9,7 @@ const AgreeCheckBox = () => {
         <CheckIcon>
           <Image src="/AgreeCheckIcon.svg" width={20} height={20} alt="(V)" />
         </CheckIcon>
-        <CheckDescription>서비스 약관 및 개인정보 처리방침에 동의합니다.</CheckDescription>
+        <CheckDescription>서비스 약관 및 개인정보 처리 동의</CheckDescription>
       </CheckContainer>
       <LookMoreDetail>보기</LookMoreDetail>
     </Container>

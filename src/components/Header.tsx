@@ -73,7 +73,6 @@ const Container = styled.div`
       @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
         width : ${widthSmallWindow};
       }
-      height: 1366px;
     }
     `}
   /* Auto layout */

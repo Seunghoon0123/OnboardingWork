@@ -3,6 +3,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
+const inputContainerBorder = `
+  border: 1.5px solid #f6f8f9;
+  border-radius: 12px;
+`;
+
 interface FormValues {
   jobgroup: string;
   belong1: string;
@@ -121,26 +126,8 @@ const BasicInfoInput = () => {
 export default BasicInfoInput;
 
 const JobGroupConainer = styled.div`
-  /* ${(props) => {
-    return `
-    @media screen and (max-width: ${props.theme.contentWidthSize.bigWindow}) {
-      width: ${props.theme.contentWidthSize.bigWindow};
-    }
-    @media screen and (max-width: ${props.theme.contentWidthSize.middleWindow}) {
-      width: ${props.theme.contentWidthSize.middleWindow};
-    }
-    @media screen and (max-width: ${props.theme.contentWidthSize.smallWindow}) {
-      width: ${props.theme.contentWidthSize.smallWindow};
-    }
-    `;
-  }} */
-  /* InputWithLabel/L/IconTrailing */
-
-  box-sizing: border-box;
-
   /* Auto layout */
-
-  ${(props) => props.theme.flexRowSet.center}
+  ${(props) => props.theme.flexRowSet.spaceBetween}
   padding: 8px 16px;
 
   /* Gray/50 */
@@ -148,19 +135,27 @@ const JobGroupConainer = styled.div`
   background: #f6f8f9;
   /* Gray/50 */
 
-  border: 1.5px solid #f6f8f9;
-  border-radius: 12px;
+  ${inputContainerBorder}
 `;
 
 const Belong1Container = styled.div`
   /* InputWithLabel/L/IconTrailing */
 
-  box-sizing: border-box;
-
   /* Auto layout */
 
-  ${(props) => props.theme.flexRowSet.center}
-  margin-top: 16px;
+  ${(props) => props.theme.flexRowSet.spaceBetween}
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 16px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 16px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        margin-top: 12px;
+    }
+    `}
   padding: 8px 16px;
 
   /* Gray/50 */
@@ -168,19 +163,27 @@ const Belong1Container = styled.div`
   background: #f6f8f9;
   /* Gray/50 */
 
-  border: 1.5px solid #f6f8f9;
-  border-radius: 12px;
+  ${inputContainerBorder}
 `;
 
 const Belong2Container = styled.div`
   /* InputWithLabel/L/IconTrailing */
 
-  box-sizing: border-box;
-
   /* Auto layout */
 
-  ${(props) => props.theme.flexRowSet.center}
-  margin-top: 16px;
+  ${(props) => props.theme.flexRowSet.spaceBetween}
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 16px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 16px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        margin-top: 12px;
+    }
+    `}
   padding: 8px 16px;
 
   /* Gray/50 */
@@ -188,18 +191,15 @@ const Belong2Container = styled.div`
   background: #f6f8f9;
   /* Gray/50 */
 
-  border: 1.5px solid #f6f8f9;
-  border-radius: 12px;
+  ${inputContainerBorder}
 `;
 
 const Belong3Container = styled.div`
   /* InputWithLabel/L/IconTrailing */
 
-  box-sizing: border-box;
-
   /* Auto layout */
 
-  ${(props) => props.theme.flexRowSet.center}
+  ${(props) => props.theme.flexRowSet.spaceBetween}
   margin-top: 16px;
   padding: 8px 16px;
 
@@ -208,16 +208,12 @@ const Belong3Container = styled.div`
   background: #f6f8f9;
   /* Gray/50 */
 
-  border: 1.5px solid #f6f8f9;
-  border-radius: 12px;
+  ${inputContainerBorder}
 `;
 
 const SelectContainer = styled.div`
   /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  ${(props) => props.theme.flexCustomSet({ flexDirection: 'column', justifyContent: '', alignItems: 'flex-start' })}
 `;
 
 const Select = styled.select`
@@ -225,7 +221,6 @@ const Select = styled.select`
   background: transparent;
   appearance: none;
   border: 0 none;
-  width: 456px;
 
   ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
@@ -240,8 +235,6 @@ const Select = styled.select`
 
 const Label = styled.label`
   /* 라벨 */
-
-  width: 456px;
 
   font-family: 'Pretendard';
   font-style: 'normal';

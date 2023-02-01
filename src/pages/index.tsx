@@ -56,31 +56,55 @@ const BackGround = styled.div`
       justifyContent: '',
       alignItems: 'center',
     })}
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        height: 1786px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        height: 1769px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        height: 1857px;
+    }
+    `}
   position: relative;
   width: 100vw;
-  height: 1786px;
 `;
 
 const Container = styled.div`
   ${(props) =>
     `
-      @media only screen and (min-width: ${props.theme.browserWidthSize.smallWindow}) {
-      width: ${props.theme.contentWidthSize.smallWindow};
-      height: 1366px;
-      @media only screen and (min-width: ${props.theme.browserWidthSize.middleWindow}) {
-      width: ${props.theme.contentWidthSize.middleWindow};
-      @media only screen and (min-width: ${props.theme.browserWidthSize.bigWindow}) {
-      width: ${props.theme.contentWidthSize.bigWindow};
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        width: ${props.theme.contentWidthSize.bigWindow};
+        height: 1366px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        width: ${props.theme.contentWidthSize.middleWindow};
+        height: 1221px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        width: ${props.theme.contentWidthSize.smallWindow};
+        height: 1221px;
     }
     `}
   position: relative;
-  /* width: 1440px; */
 `;
 
 const RegistTitle = styled.div`
   /* 의료인 등록 */
-
-  margin-top: 124px;
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 64px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 32px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        margin-top: 32px;
+    }
+    `}
 
   /* Heading/M/700 */
 
@@ -99,15 +123,20 @@ const RegistTitle = styled.div`
 `;
 
 const RegistTitleDescription = styled.div`
-  ${(props) => {
-    return `
-    @media screen and (min-width: 1440px) {
-      width: ${props.theme.contentWidthSize.bigWindow};
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 10px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        display: none;
+        margin-top: 48px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        display: none;
+        margin-top: 32px;
     }
-    `;
-  }}
-
-  margin-top: 10px;
+    `}
 
   /* Paragraph/M/400 */
 
@@ -123,10 +152,22 @@ const RegistTitleDescription = styled.div`
 `;
 
 const BasicInfo = styled.div`
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 65px;
+        margin-bottom: 29px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 48px;
+        margin-bottom: 20px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        margin-top: 32px;
+        margin-bottom: 16px;
+    }
+    `}
   /* 기본 정보 */
-
-  margin-top: 65px;
-  margin-bottom: 29px;
 
   /* Label/L/700 */
 
@@ -145,9 +186,19 @@ const BasicInfo = styled.div`
 `;
 
 const RegistCertificate = styled.div`
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 93px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-top: 48px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        margin-top: 48px;
+    }
+    `}
   /* 증명서 등록 */
-
-  margin-top: 93px;
 
   /* Label/L/700 */
 
