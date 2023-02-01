@@ -1,5 +1,11 @@
 import 'styled-components';
 
+interface flexCustomSetParmas {
+  flexDirection: string;
+  justifyContent: string;
+  alignItems: string;
+}
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
@@ -17,15 +23,15 @@ declare module 'styled-components' {
       middleWindow: string;
       smallWindow: string;
     };
-    leftPosition: {
-      bigWindow: string;
-      middleWindow: string;
-      smallWindow: string;
-    };
-    flexSet: {
+    flexRowSet: {
       center: string;
       spaceBetween: string;
       spaceAround: string;
+    };
+    flexCustomSet: ({ flexDirection, justifyContent, alignItems }: flexCustomSetParmas) => string;
+
+    fontSet: {
+      pretendard: string;
     };
   }
 }

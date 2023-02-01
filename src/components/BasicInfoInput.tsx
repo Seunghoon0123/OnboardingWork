@@ -140,18 +140,8 @@ const JobGroupConainer = styled.div`
 
   /* Auto layout */
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  ${(props) => props.theme.flexRowSet.center}
   padding: 8px 16px;
-  gap: 8px;
-
-  position: absolute;
-  width: 512px;
-  height: 52px;
-  left: 464px;
-  top: 364px;
 
   /* Gray/50 */
 
@@ -169,18 +159,9 @@ const Belong1Container = styled.div`
 
   /* Auto layout */
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  ${(props) => props.theme.flexRowSet.center}
+  margin-top: 16px;
   padding: 8px 16px;
-  gap: 8px;
-
-  position: absolute;
-  width: 512px;
-  height: 52px;
-  left: 464px;
-  top: 432px;
 
   /* Gray/50 */
 
@@ -198,18 +179,9 @@ const Belong2Container = styled.div`
 
   /* Auto layout */
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  ${(props) => props.theme.flexRowSet.center}
+  margin-top: 16px;
   padding: 8px 16px;
-  gap: 8px;
-
-  position: absolute;
-  width: 512px;
-  height: 52px;
-  left: 464px;
-  top: 500px;
 
   /* Gray/50 */
 
@@ -227,18 +199,9 @@ const Belong3Container = styled.div`
 
   /* Auto layout */
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  ${(props) => props.theme.flexRowSet.center}
+  margin-top: 16px;
   padding: 8px 16px;
-  gap: 8px;
-
-  position: absolute;
-  width: 512px;
-  height: 52px;
-  left: 464px;
-  top: 568px;
 
   /* Gray/50 */
 
@@ -250,23 +213,11 @@ const Belong3Container = styled.div`
 `;
 
 const SelectContainer = styled.div`
-  /* Frame 2282 */
-
   /* Auto layout */
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
-
-  width: 456px;
-  height: 36px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 1;
 `;
 
 const Select = styled.select`
@@ -275,12 +226,8 @@ const Select = styled.select`
   appearance: none;
   border: 0 none;
   width: 456px;
-  height: 20px;
 
-  /* Label/M/500 */
-
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
@@ -289,61 +236,22 @@ const Select = styled.select`
   /* Gray/300 */
 
   color: #cbcbcb;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
 `;
 
 const Label = styled.label`
   /* 라벨 */
 
   width: 456px;
-  height: 16px;
-
-  /* Label/XS/500 */
 
   font-family: 'Pretendard';
-  font-style: normal;
+  font-style: 'normal';
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  /* identical to box height, or 133% */
-
-  /* Gray / 500 */
 
   color: #757575;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
 `;
 
 const DropdownIcon = styled.div`
-  position: relative;
-  /* Icon/Chevron.Down */
-
-  width: 16px;
-  height: 16px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-
-  img {
-    position: absolute;
-    left: 16.67%;
-    right: 16.67%;
-    top: 34.38%;
-    bottom: 29.17%;
-    /* Gray / 500 */
-  }
+  ${(props) => props.theme.flexRowSet.center}
 `;

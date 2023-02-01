@@ -3,10 +3,16 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 const headerHeight = '60px';
-const headerWidth = '1040px';
-const TitleLayout = `
+const widthBigWindow = '1040px';
+const widthMiddleWindow = '702px';
+const widthSmallWindow = '343px';
+const TitleBigWindowLayout = `
   width: 100px;
   height: 27.66px;
+`;
+const TitleSmallWindowLayout = `
+  width: 57.91px;
+  height: 15.92px;
 `;
 const IconGroupLayout = `
   width: 104px; 
@@ -46,46 +52,67 @@ const Header = () => {
 export default Header;
 
 const Background = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${(props) => props.theme.flexRowSet.center}
   width: 100%;
   height: ${headerHeight};
 
   /* Background */
 
-  /* background: #fcfcfc; */
-  background: gray;
+  background: #fcfcfc;
 `;
 
 const Container = styled.div`
-  /* Header */
-  width: ${headerWidth};
-
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        width : ${widthBigWindow};
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        width : ${widthMiddleWindow};
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        width : ${widthSmallWindow};
+      }
+      height: 1366px;
+    }
+    `}
   /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  ${(props) => props.theme.flexRowSet.spaceBetween}
 `;
 const Title = styled.div`
-  ${TitleLayout}
-  flex: none;
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        img{
+          ${TitleBigWindowLayout}
+        }
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        img{
+          ${TitleSmallWindowLayout}
+        }
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        img{
+          ${TitleSmallWindowLayout}
+        }
+      }
+    }
+    `}
 `;
 
 const HeaderRight = styled.div`
-  ${(props) => props.theme.flexSet.spaceBetween}
+  ${(props) => props.theme.flexRowSet.spaceBetween}
 
   /* Group 12 */
   ${IconGroupLayout}
 `;
 const BellIcon = styled.div`
   /* Icon/Alert */
-  ${(props) => props.theme.flexSet.center}
+  ${(props) => props.theme.flexRowSet.center}
 `;
 const MenuFrame = styled.div`
-  ${(props) => props.theme.flexSet.spaceBetween}
+  ${(props) => props.theme.flexRowSet.spaceBetween}
 
   /* Auto layout */
   ${MenuFrameLayout}
@@ -100,11 +127,11 @@ const MenuFrame = styled.div`
 `;
 
 const MenuBtn = styled.div`
-  ${(props) => props.theme.flexSet.center}/* Systems / menu */
+  ${(props) => props.theme.flexRowSet.center}/* Systems / menu */
 
   /* Inside auto layout */
 `;
 
 const MyAccount = styled.div`
-  ${(props) => props.theme.flexSet.center}/* Icon/Icon/Person Circle */
+  ${(props) => props.theme.flexRowSet.center}/* Icon/Icon/Person Circle */
 `;

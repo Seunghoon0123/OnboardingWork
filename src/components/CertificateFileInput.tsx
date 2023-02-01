@@ -1,5 +1,4 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 const CertificateFileInput = () => {
@@ -19,26 +18,15 @@ export default CertificateFileInput;
 
 const Container = styled.div`
   /* File drop / Enabled */
-
-  position: absolute;
-  width: 512px;
   height: 136px;
-  left: 464px;
-  top: 809px;
-
   border-radius: 16px;
 `;
 
 const BaseLine = styled.div`
   /* Base */
-
+  ${(props) => props.theme.flexCustomSet({ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' })}
+  height: 100%;
   box-sizing: border-box;
-
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
 
   /* Gray/50 */
 
@@ -52,16 +40,9 @@ const BaseLine = styled.div`
 const UploadDescription = styled.div`
   /* 이곳에 파일을 올려 첨부해주세요 */
 
-  position: absolute;
-  width: 180px;
-  height: 16px;
-  left: 166px;
-  top: 38px;
-
   /* Label/S/400 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
@@ -79,23 +60,13 @@ const FileSearchButton = styled.button`
 
   /* Auto layout */
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 16px;
-  gap: 10px;
-
-  position: absolute;
-  width: 126px;
-  height: 32px;
-  left: 193px;
-  top: 62px;
+  ${(props) => props.theme.flexRowSet.center}
+  margin-top: 8px;
+  padding: 8px 37px;
 
   /* Blue/50 */
 
   background: #eff3fe;
-  border: 0 none;
   border-radius: 32px;
 `;
 
@@ -106,8 +77,7 @@ const ButtonLabel = styled.div`
 
   /* Label/S/500 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;

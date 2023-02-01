@@ -94,8 +94,7 @@ const CompleteMessage = styled.div`
 
   /* Heading/M/700 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 700;
   font-size: 28px;
   line-height: 36px;
@@ -119,8 +118,7 @@ const CompleteDescription = styled.div`
 
   /* Paragraph/M/700 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -223,8 +221,7 @@ const AuthenticationCheck = styled.div`
   left: 430px;
   top: 603px;
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
@@ -246,8 +243,7 @@ const AuthenticationDescription = styled.div`
 
   /* Label/S/500 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
@@ -269,8 +265,7 @@ const InformationSubmission = styled.div`
   left: 644px;
   top: 603px;
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
@@ -292,8 +287,7 @@ const InformationDescription = styled.div`
 
   /* Label/S/500 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
@@ -313,8 +307,7 @@ const Qualificaion = styled.div`
   left: 887px;
   top: 603px;
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
@@ -336,8 +329,7 @@ const QualificationDescription = styled.div`
 
   /* Label/S/500 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
@@ -385,8 +377,7 @@ const ButtonLabel = styled.div`
 
   /* Label/M/500 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;

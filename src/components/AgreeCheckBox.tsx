@@ -5,10 +5,12 @@ import styled from 'styled-components';
 const AgreeCheckBox = () => {
   return (
     <Container>
-      <CheckIcon>
-        <Image src="/AgreeCheckIcon.svg" width={20} height={20} alt="(V)" />
-      </CheckIcon>
-      <CheckDescription>서비스 약관 및 개인정보 처리방침에 동의합니다.</CheckDescription>
+      <CheckContainer>
+        <CheckIcon>
+          <Image src="/AgreeCheckIcon.svg" width={20} height={20} alt="(V)" />
+        </CheckIcon>
+        <CheckDescription>서비스 약관 및 개인정보 처리방침에 동의합니다.</CheckDescription>
+      </CheckContainer>
       <LookMoreDetail>보기</LookMoreDetail>
     </Container>
   );
@@ -18,52 +20,30 @@ export default AgreeCheckBox;
 
 const Container = styled.div`
   /* Frame 2755 */
-
-  position: absolute;
-  width: 512px;
-  height: 48px;
-  left: 464px;
-  top: 1069px;
+  ${(props) => props.theme.flexRowSet.spaceBetween}
 
   /* Gray/50 */
-
+  height:48px;
+  padding-left: 14px;
+  padding-right: 24px;
   background: #f6f8f9;
   border-radius: 8px;
 `;
 
+const CheckContainer = styled.div`
+  ${(props) => props.theme.flexRowSet.center}
+`;
+
 const CheckIcon = styled.div`
-  /* Icon/Checkmark Circle */
-
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  left: 12px;
-  top: 12px;
-
-  img {
-    /* Shape */
-
-    position: absolute;
-    left: 8.33%;
-    right: 8.33%;
-    top: 8.33%;
-    bottom: 8.33%;
-  }
+  ${(props) => props.theme.flexRowSet.center}
 `;
 
 const CheckDescription = styled.div`
   /* 서비스 약관 및 개인정보 처리방침에 동의합니다. */
-
-  position: absolute;
-  left: 10.16%;
-  right: 30.52%;
-  top: 33.33%;
-  bottom: 33.33%;
-
+  margin-left: 18px;
   /* Label/S/500 */
 
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
@@ -73,14 +53,7 @@ const CheckDescription = styled.div`
 `;
 
 const LookMoreDetail = styled.div`
-  position: absolute;
-  left: 90.43%;
-  right: 4.69%;
-  top: 33.33%;
-  bottom: 33.33%;
-
-  font-family: 'Pretendard';
-  font-style: normal;
+  ${(props) => props.theme.fontSet.pretendard}
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;

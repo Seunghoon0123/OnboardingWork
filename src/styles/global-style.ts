@@ -9,4 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     min-width: 320px;
   }
   a { cursor: pointer; text-decoration: none; }
+  button {
+    border:0px none;
+  }
 `;

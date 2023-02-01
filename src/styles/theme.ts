@@ -16,12 +16,7 @@ export const theme: DefaultTheme = {
     middleWindow: '768px',
     smallWindow: '375px',
   },
-  leftPosition: {
-    bigWindow: '1440px',
-    middleWindow: '768px',
-    smallWindow: '375px',
-  },
-  flexSet: {
+  flexRowSet: {
     center: `
       display: flex;
       justify-content: center;
@@ -36,6 +31,18 @@ export const theme: DefaultTheme = {
       display: flex;
       justify-content: space-around;
       align-items: center;
+    `,
+  },
+  flexCustomSet: ({ flexDirection, justifyContent, alignItems }) => `
+    display: flex;
+    flex-direction: ${flexDirection};
+    justify-content: ${justifyContent};
+    align-items: ${alignItems};
+  `,
+  fontSet: {
+    pretendard: `
+    font-family: 'Pretendard';
+    font-style: normal;
     `,
   },
 };
