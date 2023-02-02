@@ -6,42 +6,63 @@ import BasicInfoInput from '@/components/BasicInfoInput';
 import CertificateFileInput from '@/components/CertificateFileInput';
 import AgreeCheckBox from '@/components/AgreeCheckBox';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { basicInfoType } from '@/types/variableTypes';
 
 const Home = () => {
+  const [basicInfo, setBasicInfo] = useState<basicInfoType>({
+    userName: '',
+    professionalGroup: '',
+    belong: '',
+    doctorType: '',
+    doctorMajor: '',
+    doctorPosition: '',
+    studentGrade: '',
+    nurseType: '',
+    yearsOfService: '',
+    otherJob: '',
+  });
+
+  useEffect(() => {
+    console.log('basicInfo : ', basicInfo);
+  }, [basicInfo]);
+
   return (
     <BackGround>
-      <Header />
-      <Container>
-        <RegistTitle>의료인 등록</RegistTitle>
-        <RegistTitleDescription>
-          아래 양식을 통해 의료인 신분을 인증하여 해석인으로 참여 신청하실 수 있습니다. 해석이 가능한 의과 대학생(본과), 간호사 등, 의료 계통에 소속되어 있는
-          분들도 함께 참여하실 수 있습니다.
-        </RegistTitleDescription>
-        <BasicInfo>기본 정보</BasicInfo>
-        <BasicInfoInput />
-        <RegistCertificate>증명서 등록</RegistCertificate>
-        <RegistCertificateDescription>
-          면허증, 사원증 등 의료인 신분을 증명할 수 있는 첨부자료를 올려주세요. 기본 정보에 입력한 내용과 다를 경우 의료인 등록이 거절될 수 있습니다.
-        </RegistCertificateDescription>
-        <CertificateFileInput />
-        <AgreeCondition>약관 동의</AgreeCondition>
-        <AgreeConditionDescription>제공해주신 정보는 서비스 이용 및 신분 인증 목적을 위해서만 사용됩니다.</AgreeConditionDescription>
-        <AgreeCheckBox />
-        <StepButtonContainer>
-          <BackArrow>
-            <ArrowIcon>
-              <Image src="/BackArrow.svg" width={10.67} height={5.83} alt="v" />
-            </ArrowIcon>
-            <Label />
-          </BackArrow>
-          <NextButton>
-            <ButtonLabel>다음</ButtonLabel>
-            <NextArrow>
-              <Image src="/NextArrow.svg" width={10.67} height={5.83} alt="v" />
-            </NextArrow>
-          </NextButton>
-        </StepButtonContainer>
-      </Container>
+      <div className="upperContainer">
+        <Header />
+        <Container>
+          <RegistTitle>의료인 등록</RegistTitle>
+          <RegistTitleDescription>
+            아래 양식을 통해 의료인 신분을 인증하여 해석인으로 참여 신청하실 수 있습니다. 해석이 가능한 의과 대학생(본과), 간호사 등, 의료 계통에 소속되어 있는
+            분들도 함께 참여하실 수 있습니다.
+          </RegistTitleDescription>
+          <BasicInfo>기본 정보</BasicInfo>
+          <BasicInfoInput setBasicInfo={setBasicInfo} />
+          <RegistCertificate>증명서 등록</RegistCertificate>
+          <RegistCertificateDescription>
+            면허증, 사원증 등 의료인 신분을 증명할 수 있는 첨부자료를 올려주세요. 기본 정보에 입력한 내용과 다를 경우 의료인 등록이 거절될 수 있습니다.
+          </RegistCertificateDescription>
+          <CertificateFileInput />
+          <AgreeCondition>약관 동의</AgreeCondition>
+          <AgreeConditionDescription>제공해주신 정보는 서비스 이용 및 신분 인증 목적을 위해서만 사용됩니다.</AgreeConditionDescription>
+          <AgreeCheckBox />
+          <StepButtonContainer>
+            <BackArrow>
+              <ArrowIcon>
+                <Image src="/BackArrow.svg" width={10.67} height={5.83} alt="v" />
+              </ArrowIcon>
+              <Label />
+            </BackArrow>
+            <NextButton>
+              <ButtonLabel>다음</ButtonLabel>
+              <NextArrow>
+                <Image src="/NextArrow.svg" width={10.67} height={5.83} alt="v" />
+              </NextArrow>
+            </NextButton>
+          </StepButtonContainer>
+        </Container>
+      </div>
       <Footer />
     </BackGround>
   );
@@ -53,23 +74,22 @@ const BackGround = styled.div`
   ${(props) =>
     props.theme.flexCustomSet({
       flexDirection: 'column',
-      justifyContent: '',
-      alignItems: 'center',
+      justifyContent: 'space-between',
+      alignItems: '',
     })}
-  ${(props) =>
-    `
-      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
-        height: 1786px;
-      }
-      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
-        height: 1769px;
-      }
-      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
-        height: 1857px;
-    }
-    `}
+
   position: relative;
   width: 100vw;
+  height: 100vh;
+
+  .upperContainer {
+    ${(props) =>
+      props.theme.flexCustomSet({
+        flexDirection: 'column',
+        justifyContent: '',
+        alignItems: 'center',
+      })}
+  }
 
   button {
     &:hover {
@@ -84,15 +104,12 @@ const Container = styled.div`
     `
       @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
         width: ${props.theme.contentWidthSize.bigWindow};
-        height: 1366px;
       }
       @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
         width: ${props.theme.contentWidthSize.middleWindow};
-        height: 1221px;
       }
       @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
         width: ${props.theme.contentWidthSize.smallWindow};
-        height: 1221px;
     }
     `}
   position: relative;
@@ -290,6 +307,18 @@ const AgreeConditionDescription = styled.div`
 
 const StepButtonContainer = styled.div`
   ${(props) => props.theme.flexRowSet.spaceBetween}
+  ${(props) =>
+    `
+      @media (min-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-bottom: 213px;
+      }
+      @media (min-width: ${props.theme.browserWidthSize.middleWindow}) and (max-width: ${props.theme.browserWidthSize.bigWindow}) {
+        margin-bottom: 215px;
+      }
+      @media (max-width: ${props.theme.browserWidthSize.middleWindow}) {
+        margin-bottom: 247px;
+    }
+    `}
   margin-top:64px;
 `;
 
