@@ -38,7 +38,7 @@ const CheckIcon = styled.div`
   ${(props) => props.theme.flexRowSet.center}
   &:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.7;
   }
 `;
 
@@ -71,6 +71,6 @@ const LookMoreDetail = styled.div`
   color: #757575;
   &:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.7;
   }
 `;

@@ -22,6 +22,7 @@ const Home = () => {
     yearsOfService: '',
     otherJob: '',
   });
+  const [certificateFile, setCertificateFile] = useState<File>();
 
   const [isBasicFull, setIsBasicFull] = useState(false);
 
@@ -55,7 +56,7 @@ const Home = () => {
           <RegistCertificateDescription>
             면허증, 사원증 등 의료인 신분을 증명할 수 있는 첨부자료를 올려주세요. 기본 정보에 입력한 내용과 다를 경우 의료인 등록이 거절될 수 있습니다.
           </RegistCertificateDescription>
-          <CertificateFileInput />
+          <CertificateFileInput setCertificateFile={setCertificateFile} />
           <AgreeCondition>약관 동의</AgreeCondition>
           <AgreeConditionDescription>제공해주신 정보는 서비스 이용 및 신분 인증 목적을 위해서만 사용됩니다.</AgreeConditionDescription>
           <AgreeCheckBox />
@@ -106,7 +107,7 @@ const BackGround = styled.div`
   button {
     &:hover {
       cursor: pointer;
-      opacity: 0.5;
+      opacity: 0.7;
     }
   }
 `;
@@ -348,7 +349,7 @@ const BackArrow = styled.div`
 
   &:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.7;
   }
 `;
 

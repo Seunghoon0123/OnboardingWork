@@ -462,6 +462,6 @@ const DropdownIcon = styled.div`
   ${(props) => props.theme.flexRowSet.center}
   &:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.7;
   }
 `;
