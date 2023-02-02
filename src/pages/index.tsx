@@ -22,13 +22,7 @@ const Home = () => {
     yearsOfService: '',
     otherJob: '',
   });
-
   const [certificateFile, setCertificateFile] = useState<File>();
-
-  useEffect(() => {
-    console.log('basicInfo : ', basicInfo);
-    console.log('certificateFile : ', certificateFile);
-  }, [basicInfo, certificateFile]);
 
   return (
     <BackGround>
