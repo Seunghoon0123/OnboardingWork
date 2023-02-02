@@ -58,7 +58,7 @@ const CertificateFileInput = ({ setCertificateFile }: PropsTypes) => {
   const fileDelete = () => {
     setCertificateFile({});
     setFileName('');
-    setFileSize('');
+    setFileSize(0);
   };
 
   return (
@@ -74,7 +74,8 @@ const CertificateFileInput = ({ setCertificateFile }: PropsTypes) => {
         {fileName && fileSize ? (
           <>
             <UploadDescription>{fileName}</UploadDescription>
-            <UploadDescription>{`${(fileSize / 1000000).toFixed(1)} MB`}</UploadDescription>
+            <UploadDescription>{`크기 : ${(fileSize / 1000000).toFixed(1)} MB`}</UploadDescription>
+            <br />
             <FileDeleteButton onClick={fileDelete}>파일 삭제</FileDeleteButton>
           </>
         ) : (
