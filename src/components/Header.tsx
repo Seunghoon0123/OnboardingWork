@@ -53,7 +53,7 @@ export default Header;
 
 const Background = styled.header`
   ${(props) => props.theme.flexRowSet.center}
-  width: 100%;
+  width: 100vw;
   height: ${headerHeight};
 
   /* Background */
