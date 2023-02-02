@@ -56,7 +56,7 @@ const CertificateFileInput = ({ setCertificateFile }: PropsTypes) => {
   };
 
   const fileDelete = () => {
-    setCertificateFile({});
+    setCertificateFile(undefined);
     setFileName('');
     setFileSize(0);
   };
