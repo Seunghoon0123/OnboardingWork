@@ -23,8 +23,8 @@ const Home = () => {
     otherJob: '',
   });
   const [certificateFile, setCertificateFile] = useState<File>();
-
-  const [isBasicFull, setIsBasicFull] = useState(false);
+  const [isInputComplete, setIsInputComplete] = useState(false);
+  const [isAgree, setIsAgree] = useState(false);
 
   useEffect(() => {
     let isFull = true;
@@ -32,12 +32,16 @@ const Home = () => {
     Object.values(basicInfo).forEach((value) => {
       isFull = isFull && !!value;
     });
-    setIsBasicFull(isFull);
-  }, [basicInfo]);
+
+    console.log();
+    isFull = isFull && !!certificateFile;
+    setIsInputComplete(isFull);
+  }, [basicInfo, certificateFile]);
 
   const goNext = () => {
-    if (isFullInput) alert('넘어가~');
-    else alert('입력란을 모두 채워주세요.');
+    if (isInputComplete && isAgree) alert('넘어가~');
+    else if (!isInputComplete) alert('입력란을 모두 채워주세요.');
+    else if (!isAgree) alert('약관에 동의해주세요.');
   };
 
   return (
@@ -59,7 +63,7 @@ const Home = () => {
           <CertificateFileInput setCertificateFile={setCertificateFile} />
           <AgreeCondition>약관 동의</AgreeCondition>
           <AgreeConditionDescription>제공해주신 정보는 서비스 이용 및 신분 인증 목적을 위해서만 사용됩니다.</AgreeConditionDescription>
-          <AgreeCheckBox />
+          <AgreeCheckBox isAgree={isAgree} setIsAgree={setIsAgree} />
           <StepButtonContainer>
             <BackArrow>
               <ArrowIcon>

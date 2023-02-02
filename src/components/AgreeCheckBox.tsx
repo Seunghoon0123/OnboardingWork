@@ -1,12 +1,21 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const AgreeCheckBox = () => {
+interface PropsTypes {
+  isAgree: boolean;
+  setIsAgree: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AgreeCheckBox = ({ isAgree, setIsAgree }: PropsTypes) => {
+  const clickAgree = () => {
+    setIsAgree((prev) => !prev);
+  };
+
   return (
     <Container>
       <CheckContainer>
-        <CheckIcon>
+        <CheckIcon onClick={clickAgree} style={{ opacity: isAgree ? 1 : 0.2 }}>
           <Image src="/AgreeCheckIcon.svg" width={20} height={20} alt="(V)" />
         </CheckIcon>
         <CheckDescription>서비스 약관 및 개인정보 처리 동의</CheckDescription>
@@ -38,7 +47,6 @@ const CheckIcon = styled.div`
   ${(props) => props.theme.flexRowSet.center}
   &:hover {
     cursor: pointer;
-    opacity: 0.7;
   }
 `;
 
