@@ -1,6 +1,6 @@
 import { basicInfoType } from '@/types/variableTypes';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -54,13 +54,17 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
     setValue,
     getValues,
     watch,
-    reset,
   } = useForm<basicInfoType>();
 
-  const setInfo = () => {
-    setBasicInfo({ ...getValues() });
-  };
+  const [values, setValues] = useState(getValues());
 
+  useEffect(() => {
+    setBasicInfo(getValues());
+  }, [values]);
+
+  const setInfo = () => {
+    setValues(getValues());
+  };
   return (
     <form
       onSubmit={(event) => {
@@ -135,7 +139,7 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
               }}
               value={watch('doctorType')}
             >
-              {proffesionType[getValues().professionalGroup]?.map((option) => (
+              {proffesionType.doctor.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -188,6 +192,34 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
         ''
       )}
 
+      {getValues().professionalGroup === 'student' ? (
+        <LicenseDivisionContainer>
+          <SelectContainer>
+            <Label htmlFor="doctorType">학년</Label>
+            <Select
+              id="doctorType"
+              {...register('doctorType', { required: true })}
+              onChange={(e) => {
+                setValue('doctorType', e.target.value);
+                setInfo();
+              }}
+              value={watch('doctorType')}
+            >
+              {proffesionType.student.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </Select>
+          </SelectContainer>
+          <DropdownIcon>
+            <Image className="DropdownImg" src="/DropdownIcon.svg" width={10.67} height={5.83} alt="v" />
+          </DropdownIcon>
+        </LicenseDivisionContainer>
+      ) : (
+        ''
+      )}
+
       {getValues().professionalGroup === 'nurse' ? (
         <LicenseDivisionContainer>
           <SelectContainer>
@@ -201,7 +233,7 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
               }}
               value={watch('nurseType')}
             >
-              {proffesionType[getValues().professionalGroup]?.map((option) => (
+              {proffesionType.nurse.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -374,6 +406,8 @@ const Input = styled.input`
   background: transparent;
   appearance: none;
   border: 0 none;
+  padding: 0;
+  width: 200%;
 
   ${(props) => props.theme.fontSet.pretendard}
   font-weight: 500;

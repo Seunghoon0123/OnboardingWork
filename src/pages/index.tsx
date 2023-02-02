@@ -24,6 +24,22 @@ const Home = () => {
   });
   const [certificateFile, setCertificateFile] = useState<File>();
 
+  const [isBasicFull, setIsBasicFull] = useState(false);
+
+  useEffect(() => {
+    let isFull = true;
+    console.log('basicInfo : ', basicInfo);
+    Object.values(basicInfo).forEach((value) => {
+      isFull = isFull && !!value;
+    });
+    setIsBasicFull(isFull);
+  }, [basicInfo]);
+
+  const goNext = () => {
+    if (isFullInput) alert('넘어가~');
+    else alert('입력란을 모두 채워주세요.');
+  };
+
   return (
     <BackGround>
       <div className="upperContainer">
@@ -51,7 +67,7 @@ const Home = () => {
               </ArrowIcon>
               <Label />
             </BackArrow>
-            <NextButton>
+            <NextButton onClick={goNext}>
               <ButtonLabel>다음</ButtonLabel>
               <NextArrow>
                 <Image src="/NextArrow.svg" width={10.67} height={5.83} alt="v" />
