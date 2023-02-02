@@ -27,7 +27,9 @@ declare module 'styled-components' {
       center: string;
       spaceBetween: string;
       spaceAround: string;
+      stretch: string;
     };
+
     flexCustomSet: ({ flexDirection, justifyContent, alignItems }: flexCustomSetParmas) => string;
 
     fontSet: {

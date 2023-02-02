@@ -32,6 +32,11 @@ export const theme: DefaultTheme = {
       justify-content: space-around;
       align-items: center;
     `,
+    stretch: `
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    `,
   },
   flexCustomSet: ({ flexDirection, justifyContent, alignItems }) => `
     display: flex;
