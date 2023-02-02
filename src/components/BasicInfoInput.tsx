@@ -188,6 +188,34 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
         ''
       )}
 
+      {getValues().professionalGroup === 'student' ? (
+        <LicenseDivisionContainer>
+          <SelectContainer>
+            <Label htmlFor="doctorType">학년</Label>
+            <Select
+              id="doctorType"
+              {...register('doctorType', { required: true })}
+              onChange={(e) => {
+                setValue('doctorType', e.target.value);
+                setInfo();
+              }}
+              value={watch('doctorType')}
+            >
+              {proffesionType[getValues().professionalGroup]?.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </Select>
+          </SelectContainer>
+          <DropdownIcon>
+            <Image className="DropdownImg" src="/DropdownIcon.svg" width={10.67} height={5.83} alt="v" />
+          </DropdownIcon>
+        </LicenseDivisionContainer>
+      ) : (
+        ''
+      )}
+
       {getValues().professionalGroup === 'nurse' ? (
         <LicenseDivisionContainer>
           <SelectContainer>
