@@ -55,6 +55,12 @@ const CertificateFileInput = ({ setCertificateFile }: PropsTypes) => {
     target.style.backgroundColor = '';
   };
 
+  const fileDelete = () => {
+    setCertificateFile({});
+    setFileName('');
+    setFileSize('');
+  };
+
   return (
     <Container>
       <BaseLine
@@ -69,6 +75,7 @@ const CertificateFileInput = ({ setCertificateFile }: PropsTypes) => {
           <>
             <UploadDescription>{fileName}</UploadDescription>
             <UploadDescription>{`${(fileSize / 1000000).toFixed(1)} MB`}</UploadDescription>
+            <FileDeleteButton onClick={fileDelete}>파일 삭제</FileDeleteButton>
           </>
         ) : (
           <>
@@ -161,9 +168,6 @@ const ButtonLabel = styled.label`
 
   /* Inside auto layout */
 
-  flex: none;
-  order: 0;
-  flex-grow: 0;
   :hover {
     cursor: pointer;
   }
@@ -171,4 +175,24 @@ const ButtonLabel = styled.label`
 
 const FileInput = styled.input`
   display: none;
+`;
+
+const FileDeleteButton = styled.button`
+  /* Button/S/Secondary/Default */
+
+  /* Auto layout */
+
+  ${(props) => props.theme.flexRowSet.center}
+  margin-top: 8px;
+  padding: 6px 27px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: tomato;
+
+  /* Blue/50 */
+
+  background: #eff3fe;
+  border-radius: 32px;
 `;
