@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import reset from 'styled-reset';
 
 const inputContainerBorder = `
   border: 1.5px solid #f6f8f9;
@@ -53,6 +54,7 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
     formState: { errors },
     setValue,
     getValues,
+    reset,
     watch,
   } = useForm<basicInfoType>();
 
@@ -65,6 +67,11 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
   const setInfo = () => {
     setValues(getValues());
   };
+
+  const clickDropdown = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    console.dir(event.target);
+  };
+
   return (
     <form
       onSubmit={(event) => {
@@ -106,7 +113,7 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
             ))}
           </Select>
         </SelectContainer>
-        <DropdownIcon>
+        <DropdownIcon onClick={clickDropdown}>
           <Image className="DropdownImg" src="/DropdownIcon.svg" width={10.67} height={5.83} alt="v" />
         </DropdownIcon>
       </ProfessionalGroupConainer>
@@ -146,7 +153,7 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
               ))}
             </Select>
           </SelectContainer>
-          <DropdownIcon>
+          <DropdownIcon onClick={clickDropdown}>
             <Image className="DropdownImg" src="/DropdownIcon.svg" width={10.67} height={5.83} alt="v" />
           </DropdownIcon>
         </LicenseDivisionContainer>
@@ -212,7 +219,7 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
               ))}
             </Select>
           </SelectContainer>
-          <DropdownIcon>
+          <DropdownIcon onClick={clickDropdown}>
             <Image className="DropdownImg" src="/DropdownIcon.svg" width={10.67} height={5.83} alt="v" />
           </DropdownIcon>
         </LicenseDivisionContainer>
@@ -240,7 +247,7 @@ const BasicInfoInput = ({ setBasicInfo }: PropsTypes) => {
               ))}
             </Select>
           </SelectContainer>
-          <DropdownIcon>
+          <DropdownIcon onClick={clickDropdown}>
             <Image className="DropdownImg" src="/DropdownIcon.svg" width={10.67} height={5.83} alt="v" />
           </DropdownIcon>
         </LicenseDivisionContainer>

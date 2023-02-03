@@ -1,13 +1,19 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useQuery, useMutation } from '@apollo/client';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-import styled from 'styled-components';
+import Image from 'next/image';
+
 import BasicInfoInput from '@/components/BasicInfoInput';
 import CertificateFileInput from '@/components/CertificateFileInput';
 import AgreeCheckBox from '@/components/AgreeCheckBox';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import { basicInfoType } from '@/types/variableTypes';
+
+import styled from 'styled-components';
+import { getSpecData } from '@/logic/logics';
+import { CREATE_PROFESIONAL, CREATE_USER, GET_TOTAL_USER_COUNT } from '@/queries/quaries';
 
 const Home = () => {
   const [basicInfo, setBasicInfo] = useState<basicInfoType>({
@@ -25,22 +31,59 @@ const Home = () => {
   const [certificateFile, setCertificateFile] = useState<File>();
   const [isInputComplete, setIsInputComplete] = useState(false);
   const [isAgree, setIsAgree] = useState(false);
+  const router = useRouter();
+
+  console.log('렌더링!');
 
   useEffect(() => {
     let isFull = true;
-    console.log('basicInfo : ', basicInfo);
     Object.values(basicInfo).forEach((value) => {
       isFull = isFull && !!value;
     });
 
-    console.log();
     isFull = isFull && !!certificateFile;
     setIsInputComplete(isFull);
   }, [basicInfo, certificateFile]);
 
+  const createProfessionalComplete = (data) => {
+    console.log(data);
+  };
+
+  const createUserComplete = (data) => {
+    console.log(data);
+  };
+
+  const [createProfessional] = useMutation(CREATE_PROFESIONAL, {
+    onCompleted: createProfessionalComplete,
+  });
+
+  const [createUser] = useMutation(CREATE_USER, {
+    onCompleted: createUserComplete,
+  });
+
+  // const { data } = useQuery(GET_TOTAL_USER_COUNT);
+  // console.log('GET_TOTAL_USER_COUNT : ', data);
+  // console.log('certificateFile : ', certificateFile);
+
   const goNext = () => {
-    if (isInputComplete && isAgree) alert('넘어가~');
-    else if (!isInputComplete) alert('입력란을 모두 채워주세요.');
+    if (isInputComplete && isAgree) {
+      try {
+        const specData = getSpecData(basicInfo);
+        createProfessional({
+          variables: {
+            input: {
+              userId: 'shl906@naver.com',
+              name: basicInfo.userName,
+              spec: specData,
+              files: [],
+            },
+          },
+        });
+        router.push('/complete');
+      } catch (error) {
+        console.log(error);
+      }
+    } else if (!isInputComplete) alert('입력란을 모두 채워주세요.');
     else if (!isAgree) alert('약관에 동의해주세요.');
   };
 
