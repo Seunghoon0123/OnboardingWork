@@ -6,8 +6,6 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../styles/global-style';
 import { theme } from '../styles/theme';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 const client = new ApolloClient({
   uri: 'https://devserver.ontol.com/graphql',
